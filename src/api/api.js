@@ -14,7 +14,7 @@ API.category = crud('v1/category')
 API.item = crud('v1/item')
 API.suppliers = crud('v1/suppliers')
 API.category.treelist = function() {
-  return request.get('v1/categorys/tree')
+  return request.get('v1/categorys/subhomework')
 }
 API.category.categoryOption = function() {
   return request.get('/v1/categoryoption')

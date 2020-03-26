@@ -13,7 +13,7 @@ import Layout from '@/layout'
  * hidden: true                   if set true, item will not show in the sidebar(default is false)
  * alwaysShow: true               if set true, will always show the root menu
  *                                if not set alwaysShow, when item has more than one children route,
- *                                it will becomes nested mode, otherwise not show the root menu
+ *                                it will becomes Takean mode, otherwise not show the root menu
  * redirect: noRedirect           if set noRedirect will no redirect in the breadcrumb
  * name:'router-name'             the name is used by <keep-alive> (must set!!!)
  * meta : {
@@ -49,112 +49,117 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'Dashboard',
+      name: '首页',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '首页', icon: 'dashboard' }
     }]
   },
 
   {
     path: '/example',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    redirect: '/example/homework',
+    name: '作业管理',
+    meta: { title: '作业管理', icon: 'example' },
     children: [
       {
-        path: 'table',
+        path: '/homework',
         name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        component: () => import('@/views/homework/index'),
+        meta: { title: '布置的作业', icon: 'table' }
       },
       {
-        path: 'tree',
+        path: '提交的作业',
         name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        component: () => import('@/views/subhomework/index'),
+        meta: { title: '提交的作业', icon: 'tree' }
       }
     ]
   },
 
   {
-    path: '/form',
+    path: '/attendance',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        name: '考勤管理',
+        component: () => import('@/views/attendance/index'),
+        meta: { title: '考勤管理', icon: 'form' }
       }
     ]
   },
 
   {
-    path: '/nested',
+    path: '/Takean',
     component: Layout,
-    redirect: '/nested/menu1',
+    redirect: '/Takean/grades',
     name: 'Nested',
     meta: {
-      title: 'Nested',
+      title: '考务',
       icon: 'nested'
     },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
+        path: 'grades',
+        component: () => import('@/views/Takean/grades/index'), // Parent router-view
+        name: '平时成绩',
+        meta: { title: '平时成绩' },
         children: [
           {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
+            path: 'grades-1',
+            component: () => import('@/views/Takean/grades/signin'),
+            name: '签到成绩',
+            meta: { title: '签到成绩' }
           },
           {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
+            path: 'grades-2',
+            component: () => import('@/views/Takean/grades/performance'),
+            name: '课堂表现',
+            meta: { title: '课堂表现' },
             children: [
               {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
+                path: 'grades-2-1',
+                component: () => import('@/views/Takean/grades/performance/mathematics'),
+                name: '离散数学',
+                meta: { title: '离散数学' }
               },
               {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
+                path: 'grades-2-2',
+                component: () => import('@/views/Takean/grades/performance/software'),
+                name: '软件工程',
+                meta: { title: '软件工程' }
               }
             ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
           }
         ]
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
+        path: 'Menu1-3',
+        component: () => import('@/views/Takean/grades/testscores'),
+        name: 'Menu1-3',
+        meta: { title: '考试成绩' }
       }
+
     ]
   },
-
   {
     path: 'external-link',
     component: Layout,
     children: [
       {
         path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        meta: { title: '系统用户', icon: 'link' }
+      }
+    ]
+  },
+  {
+    path: 'errormessage',
+    component: Layout,
+    children: [
+      {
+        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+        meta: { title: '小程序错误上报', icon: 'link' }
       }
     ]
   },
