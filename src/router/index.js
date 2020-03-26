@@ -65,13 +65,27 @@ export const constantRoutes = [
       {
         path: '/homework',
         name: 'Table',
-        component: () => import('@/views/homework/index'),
+        component: () => import('@/views/homework/Home'),
         meta: { title: '布置的作业', icon: 'table' }
+      },
+      {
+        path: '/homework/form',
+        name: 'homework',
+        hidden:true,
+        component: () => import('@/views/homework/Form'),
+        meta: { title: '修改添加', icon: 'table' }
+      },
+      {
+        path: '/homework/form/:id',
+        name: 'homework',
+        hidden:true,
+        component: () => import('@/views/homework/Form'),
+        meta: { title: '修改添加', icon: 'table' }
       },
       {
         path: '提交的作业',
         name: 'Tree',
-        component: () => import('@/views/subhomework/index'),
+        component: () => import('@/views/subhomework/Home'),
         meta: { title: '提交的作业', icon: 'tree' }
       }
     ]

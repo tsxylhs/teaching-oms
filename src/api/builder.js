@@ -9,7 +9,7 @@ export default function crud(prefix) {
   return {
     list: function(params) {
       console.log('api filter')
-      return request.get(path, { params: params })
+      return request.post(path+'/list', { params: params })
     },
     delete: function(id) {
       return request.delete(path + '/' + id)
@@ -18,7 +18,7 @@ export default function crud(prefix) {
       return request.get(path + '/' + id)
     },
     create: function(domain) {
-      return request.post(path, domain)
+      return request.post(path + '/add', domain)
     },
     update: function(domain) {
       return request.put(path + '/' + domain.id, domain)
