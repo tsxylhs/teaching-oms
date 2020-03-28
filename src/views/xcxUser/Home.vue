@@ -20,15 +20,15 @@
         el-table-column(prop='nickName', label='小程序昵称',sortable="custom",align='center', min-width="120")
         el-table-column(prop='calssName', label='班级',sortable="custom" width='140', align='center ')
           template(slot-scope="scope")
-            span(v-if="scope.row.calssName") {{scope.row.studentId}}
+            span(v-if="scope.row.calssName") {{scope.row.calssName}}
             span(v-else) 未绑定
         el-table-column(prop='userName', label='姓名',sortable="custom" width='140', align='center ')
           template(slot-scope="scope")
-            span(v-if="scope.row.userName") {{scope.row.studentId}}
+            span(v-if="scope.row.userName") {{scope.row.userName}}
             span(v-else) 未绑定
         el-table-column(prop='mobile', label='联系电话',sortable="custom" width='140', align='center ')
           template(slot-scope="scope")
-            span(v-if="scope.row.mobile") {{scope.row.studentId}}
+            span(v-if="scope.row.mobile") {{scope.row.mobile}}
             span(v-else) 未绑定
 
       .col-12.mt-3
