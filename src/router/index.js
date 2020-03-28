@@ -116,64 +116,46 @@ export const constantRoutes = [
     children: [
       {
         path: 'grades',
-        component: () => import('@/views/Takean/grades/index'), // Parent router-view
-        name: '平时成绩',
-        meta: { title: '平时成绩' },
-        children: [
-          {
-            path: 'grades-1',
-            component: () => import('@/views/Takean/grades/signin'),
-            name: '签到成绩',
-            meta: { title: '签到成绩' }
-          },
-          {
-            path: 'grades-2',
-            component: () => import('@/views/Takean/grades/performance'),
-            name: '课堂表现',
-            meta: { title: '课堂表现' },
-            children: [
-              {
-                path: 'grades-2-1',
-                component: () => import('@/views/Takean/grades/performance/mathematics'),
-                name: '离散数学',
-                meta: { title: '离散数学' }
-              },
-              {
-                path: 'grades-2-2',
-                component: () => import('@/views/Takean/grades/performance/software'),
-                name: '软件工程',
-                meta: { title: '软件工程' }
-              }
-            ]
-          }
-        ]
+        component: () => import('@/views/Takean/grades/Home'), // Parent router-view
+        name: '成绩',
+        meta: { title: '成绩' }
+      },{
+        path: 'grade/form',
+        component: () => import('@/views/Takean/grades/Form'), // Parent router-view
+        name: '添加成绩',
+        hidden:true,
+        meta: { title: '成绩' }
       },
       {
         path: 'Menu1-3',
-        component: () => import('@/views/Takean/grades/testscores'),
+        component: () => import('@/views/Takean/test/Home'),
         name: 'Menu1-3',
-        meta: { title: '考试成绩' }
+        meta: { title: '考试安排' }
       }
 
     ]
   },
   {
-    path: 'external-link',
+    path: '/xcx',
     component: Layout,
+    redirect: '/xcxUser',
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: '系统用户', icon: 'link' }
+        path: 'xcxUser',
+        meta: { title: '小程序用户', icon: 'link' },
+        component: () => import('@/views/xcxUser/Home'),
+
       }
     ]
   },
   {
-    path: 'errormessage',
+    path: '/errormessage',
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: '小程序错误上报', icon: 'link' }
+        path: 'xcxerror',
+        meta: { title: '小程序错误上报', icon: 'link' },
+        component: () => import('@/views/xcxerror/Home'),
       }
     ]
   },
