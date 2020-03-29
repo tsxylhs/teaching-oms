@@ -10,11 +10,9 @@
                     el-button(type='primary' size="small"  icon="el-icon-plus") 新增作业
                 // 列表
             el-table.mt-3(:data='domains', highlight-current-row='', :loading='listLoading', border='',@row-dblclick='handleView', stripe='')
-                el-table-column(prop='title', label='标题',sortable="custom",align='center', min-width="120")
+                el-table-column(prop='userName', label='姓名',sortable="custom",align='center', min-width="120")
                 el-table-column(prop='className', label='班级',sortable="custom",align='center', min-width="120")
-                el-table-column(prop='teachName', label='教师姓名',sortable="custom" width='140', align='center ')
-                el-table-column(prop='courseName', label='课程名称',sortable="custom" width='140', align='center ')
-                el-table-column(prop='content', label='内容',sortable="custom",width='140', align='center ')
+                el-table-column(prop='homeworkUrl', label='作业位置',sortable="custom" width='140', align='center ')
                 el-table-column(label='操作', width='140', align='center' fixed="right")
                     template(slot-scope='scope')
                         el-button(size='small', @click='handleView(scope.row)', type='primary', icon='el-icon-edit', plain, circle)
@@ -53,7 +51,7 @@ export default {
     },
     methods: {
       loadList: function() {
-        API.homework.list(this.filter).then((res) => {
+        API.myhomework.list(this.filter).then((res) => {
           this.domains = res.data
         }).catch((err) => {
           this.$message.error('获取列表失败')
@@ -69,7 +67,7 @@ export default {
         this.loadList()
       },
       handleDelete: function(val) {
-        API.homework.delete(val.id).then((res) => {
+        API.myhomework.delete(val.id).then((res) => {
           this.$message.success('删除成功！')
           this.loadList()
         }).catch((err) => {

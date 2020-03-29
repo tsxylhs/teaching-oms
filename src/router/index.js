@@ -83,7 +83,7 @@ export const constantRoutes = [
         meta: { title: '修改添加', icon: 'table' }
       },
       {
-        path: '提交的作业',
+        path: '/subhomework',
         name: 'Tree',
         component: () => import('@/views/subhomework/Home'),
         meta: { title: '提交的作业', icon: 'tree' }
@@ -131,8 +131,13 @@ export const constantRoutes = [
         component: () => import('@/views/Takean/test/Home'),
         name: 'Menu1-3',
         meta: { title: '考试安排' }
+      },
+      {
+        path: 'materials/home',
+        component: () => import('@/views/Takean/materials/Home'),
+        name: 'Menu1-3',
+        meta: { title: '资料管理' }
       }
-
     ]
   },
   {

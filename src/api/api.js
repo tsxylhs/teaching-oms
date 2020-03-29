@@ -3,9 +3,12 @@ import request from '@/utils/request'
 
 const API = {}
 API.homework = crud('/homework')
+API.myhomework=crud('/myhomework')
 API.grade=crud("/grade")
 API.wxUser=crud("wxUser")
 API.wxError=crud("errormessage")
+API.marterials=crud("materials")
+API.signin=crud("signin")
 API.app = {
   login: function(param) {
     return request.post('login/', param)

@@ -14,24 +14,22 @@
     .el-row(style="margin-top:20px") 课程：
       el-select(v-model='value', placeholder='请选择')
         el-option(v-for='item in options', :key='item.value', :label='item.label', :value='item.value')
-
-    .el-row(style="margin-top:20px") 学生姓名:
-      el-input(style="width:250px")(v-model="input" placeholder="请输入内容")
     .el-row
-      el-table(:data='tableData', style='width: 100%;margin-left:120px' ,:row-class-name="tableRowClassName")
-        el-table-column(prop='date', label='日期', width='180')
-        el-table-column(prop='name', label='姓名', width='180')
-        el-table-column(prop='date', label='签到时间', width='180')
-        el-table-column(prop='name', label='签退时间', width='180')
-        el-table-column(prop='date', label='状态', width='180')
-        el-table-column(prop='name', label='课程', width='180')
+      el-table(:data='domains', style='width: 100%;margin-left:120px' ,:row-class-name="tableRowClassName")
+        el-table-column(prop='studentId', label='学号', width='180')
+        el-table-column(prop='startSignin', label='签到时间', width='180')
+        el-table-column(prop='endSignin', label='签退时间', width='180')
+        el-table-column(prop='teachName', label='老师姓名', width='180')
+        el-table-column(prop='crouseName', label='课程', width='180')
       el-pagination(style="margin-left:1000px")(layout='prev, pager, next', :total='1000')
 </template>
 
 <script>
+  import API from '@/api/api'
   export default {
     data() {
       return {
+        domains:[],
         tableData: [{
           date: '2016-05-02',
           name: '王小虎',
@@ -59,26 +57,21 @@
         resource: '',
         desc: '',
         options: [{
-          value: '选项1',
-          label: '黄金糕'
-        }, {
-          value: '选项2',
-          label: '双皮奶'
-        }, {
-          value: '选项3',
-          label: '蚵仔煎'
-        }, {
-          value: '选项4',
-          label: '龙须面'
-        }, {
-          value: '选项5',
-          label: '北京烤鸭'
+          value: '高等数学',
+          label: '高等数学'
         }],
         value: ''
       }
 
     },
     methods: {
+      loadList: function() {
+        API.signin.list(this.filter).then((res) => {
+          this.domains = res.data
+        }).catch((err) => {
+          this.$message.error('获取列表失败')
+        })
+      },
       tableRowClassName({ row, rowIndex }) {
         if (rowIndex === 1) {
           return 'warning-row'
@@ -96,6 +89,9 @@
           type: 'warning'
         })
       }
+    },
+    mounted() {
+      this.loadList()
     }
   }
 </script>
