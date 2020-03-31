@@ -6,13 +6,12 @@
                     el-input.w-300p(v-model='filter.k', placeholder='请输入查询内容')
                 el-form-item
                     el-button(type='primary' icon="el-icon-查询" @click='loadList' disabled=true) 查询
-                router-link(to='/homework/form')
-                    el-button(type='primary' size="small"  icon="el-icon-plus") 新增作业
                 // 列表
             el-table.mt-3(:data='domains', highlight-current-row='', :loading='listLoading', border='',@row-dblclick='handleView', stripe='')
-                el-table-column(prop='userName', label='姓名',sortable="custom",align='center', min-width="120")
-                el-table-column(prop='className', label='班级',sortable="custom",align='center', min-width="120")
-                el-table-column(prop='homeworkUrl', label='作业位置',sortable="custom" width='140', align='center ')
+                el-table-column(prop='wxUser.studentId', label='学号',sortable="custom",align='center', min-width="120")
+                el-table-column(prop='wxUser.userName', label='姓名',sortable="custom",align='center', min-width="120")
+                el-table-column(prop='wxUser.className', label='班级',sortable="custom",align='center', min-width="120")
+                el-table-column(prop='myhomeworks.homeworkUrl', label='作业位置',sortable="custom" width='140', align='center ')
                 el-table-column(label='操作', width='140', align='center' fixed="right")
                     template(slot-scope='scope')
                         el-button(size='small', @click='handleView(scope.row)', type='primary', icon='el-icon-edit', plain, circle)

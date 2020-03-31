@@ -17,7 +17,7 @@
             el-form-item(label='签到成绩:', prop='priority')
                 el-input.w-60(v-model='domain.signin',  placeholder="内容")
             el-form-item(label='总成绩:', prop='priority')
-              el-input.w-60(v-model='domain.courseGrade',  placeholder="内容")
+              el-input.w-60(v-model='domain.grades',  placeholder="内容")
         .col-12.mb-4.text-center
               el-button(type='primary', @click='handleSave') 保存
               el-button(size='middle', @click='handleCancel') 取消

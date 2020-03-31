@@ -21,7 +21,7 @@ API.app = {
   },
   logout: function() {
     return request({
-      url: 'v1/logout',
+      url: 'login/loginout',
       method: 'post'
     })
   },

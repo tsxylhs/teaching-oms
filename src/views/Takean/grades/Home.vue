@@ -17,7 +17,7 @@
                 el-table-column(prop='showGrades', label='表现分',sortable="custom",width='140', align='center ')
                 el-table-column(prop='signin', label='签到分数',sortable="custom",width='140', align='center ')
                 el-table-column(prop='testScores', label='测试分数',sortable="custom",width='140', align='center ')
-                el-table-column(prop='courseGrade', label='总分数',sortable="custom",width='140', align='center ')
+                el-table-column(prop='grades', label='总分数',sortable="custom",width='140', align='center ')
                 el-table-column(label='操作', width='140', align='center' fixed="right")
                     template(slot-scope='scope')
                         el-button(size='small', @click='handleView(scope.row)', type='primary', icon='el-icon-edit', plain, circle)
