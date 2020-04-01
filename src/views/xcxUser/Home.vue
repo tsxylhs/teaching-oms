@@ -6,8 +6,6 @@
           el-input.w-300p(v-model='filter.k', placeholder='请输入查询内容')
         el-form-item
           el-button(type='primary' icon="el-icon-查询" @click='loadList' disabled=true) 查询
-        router-link(to='/performance/form')
-          el-button(type='primary' size="small"  icon="el-icon-plus")
         // 列表
       el-table.mt-3(:data='domains', highlight-current-row='', :loading='listLoading', border='',@row-dblclick='handleView', stripe='')
         el-table-column(prop='title', label='小程序头像',sortable="custom",align='center', min-width="120")
