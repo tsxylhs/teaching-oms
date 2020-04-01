@@ -44,16 +44,17 @@
         })
       },
       handleSave() {
+        debugger
+
         var api = this.domain.id ? API.homework.update : API.homework.create
         api(this.domain).then((res) => {
-          this.domain = res.data
-          this.$router.push('/homework/form')
+          this.$router.push('/homework')
         }).catch((err) => {
 
         })
       },
       handleCancel() {
-        this.$router.push('/homework/form')
+        this.$router.push('/homework')
       }
     },
     mounted() {

@@ -53,13 +53,14 @@
         var api = this.domain.id ? API.grade.update : API.grade.create
         api(this.domain).then((res) => {
           this.domain = res.data
-          this.$router.push('/grades')
+          this.$router.push('/Takean/grades')
         }).catch((err) => {
+          this.$router.push('/Takean/grades')
 
         })
       },
       handleCancel() {
-        this.$router.push('/grades')
+        this.$router.push('/Takean/grades')
       }
     },
     mounted() {
